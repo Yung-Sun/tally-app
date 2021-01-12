@@ -42,6 +42,7 @@ export default {
       .icon{
         width: 25px;
         height: 25px;
+        margin: 2px 0;
       }
     }
     > .item.selected{
