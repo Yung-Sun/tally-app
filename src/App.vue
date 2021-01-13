@@ -13,9 +13,8 @@ body{
   -moz-osx-font-smoothing: grayscale;
   font-family: $font-hei;
   color: #222;
+  font-size: 16px;
 }
-#app{
 
-}
 
 </style>
