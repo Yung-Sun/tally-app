@@ -13,7 +13,7 @@ import {Component} from 'vue-property-decorator';
 
 @Component
 export default class Types extends Vue {
-  type = '-'; //'-'表示支出,'+'表示收入
+  type = '-'; // '-'表示支出,'+'表示收入
   selectType(type: string) { // type只能为'-'和'+'
     if (type !== '-' && type !== '+') {
       throw new Error('type is unknown');
