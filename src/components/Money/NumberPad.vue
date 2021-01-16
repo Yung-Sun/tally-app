@@ -46,7 +46,10 @@ export default class NumberPad extends Vue {
     if (this.output.indexOf('.') >= 0) {
       if (inputText === '.') {return;}
     }
+
     this.output += inputText;
+
+
   }
 
   remove(){
@@ -62,7 +65,12 @@ export default class NumberPad extends Vue {
   }
 
   submit(){
+    const lastNumber = this.output.substr(this.output.length-1,this.output.length)
+    if(lastNumber === '.'){
+      this.output += '0'
+    }
     this.$emit('update:value', this.output)
+    this.$emit('submit', this.output)
     this.output = '0'
   }
 
