@@ -57,7 +57,7 @@ export default class Tags extends Vue {
     overflow: hidden;
 
     > li {
-      background: #eeeeee;
+      background: #ccc;
       height: 24px;
       width: 49px;
       border-radius: 12px;

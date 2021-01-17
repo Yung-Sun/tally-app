@@ -12,8 +12,9 @@ body{
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-family: $font-hei;
-  color: #222;
+  color: #333;
   font-size: 16px;
+  background: #eee;
 }
 
 
