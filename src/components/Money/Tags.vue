@@ -59,7 +59,6 @@ export default class Tags extends Vue {
     > li {
       background: #ccc;
       height: 24px;
-      width: 49px;
       border-radius: 12px;
       margin-right: 13px;
       margin-top: 8px;
