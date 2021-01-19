@@ -58,14 +58,16 @@ header {
     height: 16px;
   }
 }
-  .form-wrapper {
-    background: white;
-    margin-top: 16px;
-  }
 
-  .button-wrapper{
-    margin-top: 16*3px;
-    text-align: center;
-  };
+.form-wrapper {
+  background: white;
+  margin-top: 16px;
+}
 
+.button-wrapper {
+  margin-top: 16*3px;
+  text-align: center;
+}
+
+;
 </style>
