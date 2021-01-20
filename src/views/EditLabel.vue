@@ -1,16 +1,19 @@
 <template>
   <Layout>
     <header>
-      <Icons class="leftIcon" name="left"/>
+      <Icons class="leftIcon" name="left" @click.native="goback"/>
       <span class="title">编辑标签</span>
       <span class="occupation"></span>
     </header>
 
     <div class="form-wrapper">
-      <FormItem :value="tag.name" field-name="标签名" placeholder="请输入标签名"/>
+      <FormItem :value="tag.name"
+                @update:value="update"
+                field-name="标签名"
+                placeholder="请输入标签名"/>
     </div>
     <div class="button-wrapper">
-      <Button>删除标签</Button>
+      <Button @click="remove">删除标签</Button>
     </div>
   </Layout>
 </template>
@@ -26,7 +29,7 @@ import Button from '@/components/Button.vue';
   components: {Button, FormItem}
 })
 export default class EditLabel extends Vue {
-  tag?: {id: string ;name: string } = undefined
+  tag?: { id: string; name: string } = undefined;
 
   created() {
     const id = this.$route.params.id;
@@ -38,6 +41,19 @@ export default class EditLabel extends Vue {
     } else {
       this.$router.replace('/404');
     }
+  }
+
+  update(name: string) {
+    tagListModel.updated(this.tag.id, name);
+
+  }
+
+  remove() {
+    tagListModel.remove(this.tag.id);
+    this.$router.back()
+  }
+  goback(){
+    this.$router.back()
   }
 }
 </script>
