@@ -30,14 +30,9 @@ export default class Labels extends Vue {
   createTag() {
     const name = window.prompt('写他娘的标签名');
     if (name) {
-      const uploadMessage = tagListModel.create(name);
-      if (uploadMessage === 'duplicated'){
-        window.alert('重他娘的名')
-      }else if (uploadMessage === 'success'){
-        window.alert('创建成功')
-      }
-    }else {
-      alert('不能留空🙅‍♀️ 写他娘的标签名')
+      window.createTag(name);
+    } else {
+      alert('不能留空🙅‍♀️ 写他娘的标签名');
     }
   }
 }
