@@ -38,14 +38,17 @@ export default class EditLabel extends Vue {
 
   update(name: string) {
     if (name) {
-      window.updateTag(this.tag.id, name);
+      if (this.tag){
+        window.updateTag(this.tag.id, name);
+      }
     }
-
   }
 
   remove() {
-    if (window.removeTag(this.tag.id)) {
-      this.$router.back();
+    if (this.tag){
+      if (window.removeTag(this.tag.id)) {
+        this.$router.back();
+      }
     }
   }
 

@@ -27,7 +27,7 @@ const tagListModel: TagListModel = {
         return 'duplicated';
       } else {
         const tag = this.data.filter(item => item.id === id)[0];
-        tag.id = tag.name = name;
+        tag.name = name;
         this.save();
         return 'success';
       }
@@ -43,7 +43,6 @@ const tagListModel: TagListModel = {
         break;
       }
     }
-    console.log(index);
     this.data.splice(index,1)
     this.save()
     return true
