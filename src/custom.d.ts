@@ -18,13 +18,4 @@ type TagListModel = {
   remove: (id: string) => boolean;
 }
 
-interface Window {
-  tagList: Tag[];
-  findTag: (id: string) => Tag | undefined;
-  createTag: (name: string) => void;
-  removeTag: (id: string) => boolean;
-  updateTag: TagListModel['update']; //表示update的类型和 TagListModel中的'update'完全一样
-  recordList: RecordItem[];
-  createRecord: (record: RecordItem) => void;
-}
 
