@@ -15,20 +15,21 @@
 <script lang="ts">
 import Vue from 'vue';
 import {Component} from 'vue-property-decorator';
-import store from '@/store/index';
 
 @Component({
   computed:{
     tagList(){
-      // TODO
-      // return this.$store.fetchTags()
-      return []
+      return this.$store.state.tagList
     }
   }
 })
 export default class Tags extends Vue {
 
   selectedTags: string[] = [];
+
+  created(){
+    this.$store.commit('fetchTags')
+  }
 
   toggle(tag: string) {
     if (this.selectedTags.indexOf(tag) < 0) {
@@ -43,8 +44,7 @@ export default class Tags extends Vue {
   createTag() {
     const name = window.prompt('写他娘的标签名');
     if (name) {
-      // TODO
-      // store.createTag(name);
+      this.$store.commit('createTag', name)
     } else {
       alert('不能留空🙅‍♀️ 写他娘的标签名');
     }
