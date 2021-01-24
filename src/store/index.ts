@@ -55,6 +55,22 @@ const store = new Vuex.Store({
     saveTags(state) {
       window.localStorage.setItem('tagList', JSON.stringify(state.tagList));
     },
+    updateTag(state, payload: {id: string; name: string}){
+      const {id,name} = payload
+      const idList = state.tagList.map(item => item.id);
+      if (idList.indexOf(id) >= 0) {
+        const names = state.tagList.map(item => item.name);
+        if (names.indexOf(name) >= 0) {
+          alert('重复了！');
+        } else {
+          const tag = state.tagList.filter(item => item.id === id)[0];
+          tag.name = name;
+          store.commit('saveTags');
+        }
+      } else {
+        alert('找不着！');
+      }
+    }
   },
 });
 
