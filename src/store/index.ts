@@ -5,13 +5,25 @@ import createId from '@/lib/createId';
 
 Vue.use(Vuex); // 把 store 绑到 Vue.prototype。 Vue.prototype.$store = store
 
+type RootState = {
+  recordList: RecordItem[];
+  tagList: Tag[];
+  currentTag?: Tag;
+}
+
 
 const store = new Vuex.Store({
   state: {
-    recordList: [] as RecordItem[],
-    tagList: [] as Tag[]
-  },
+    recordList: [],
+    tagList: [],
+    currentTag: undefined
+  } as RootState,
   mutations: {
+    //CurrentTag
+    setCurrentTag(state, id: string) {
+      state.currentTag = state.tagList.filter(t => t.id === id)[0];
+    },
+
     // Record
     fetchRecords(state) {
       state.recordList = JSON.parse(window.localStorage.getItem('recordList') || '[]') as RecordItem[];
@@ -28,19 +40,17 @@ const store = new Vuex.Store({
 
     // Tag
     fetchTags(state) {
-      return state.tagList = JSON.parse(window.localStorage.getItem('tagList') || '[]') as Tag[];
+      state.tagList = JSON.parse(window.localStorage.getItem('tagList') || '[]') as Tag[];
     },
     createTag(state, name: string) {
       const names = state.tagList.map(item => item.name);
       if (names.indexOf(name) >= 0) {
         window.alert('重他娘的名');
-        return 'duplicated';
       }
       const id = createId().toString();
       state.tagList.push({id, name: name});
       store.commit('saveTags');
       window.alert('创建成功');
-      return 'success';
     },
     saveTags(state) {
       window.localStorage.setItem('tagList', JSON.stringify(state.tagList));

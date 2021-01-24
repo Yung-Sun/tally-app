@@ -5,11 +5,6 @@ const localStorageKeyName = 'tagList';
 const tagStore = {
   tagList: [] as Tag[],
 
-  findTag(id: string) {
-    return this.tagList.filter(t => t.id === id)[0];
-  },
-
-
   removeTag: (id: string) => {
     let index = -1
     for (let i=0; i < tagStore.tagList.length; i++) {
@@ -22,6 +17,7 @@ const tagStore = {
     tagStore.saveTags()
     return true
   },
+
   updateTag: (id: string, name: string) => {
     const idList = tagStore.tagList.map(item => item.id);
     if (idList.indexOf(id) >= 0) {
