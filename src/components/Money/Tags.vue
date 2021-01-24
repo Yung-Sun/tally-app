@@ -15,11 +15,19 @@
 <script lang="ts">
 import Vue from 'vue';
 import {Component} from 'vue-property-decorator';
-import store from '@/store/index2';
+import store from '@/store/index';
 
-@Component
+@Component({
+  computed:{
+    tagList(){
+      // TODO
+      // return this.$store.fetchTags()
+      return []
+    }
+  }
+})
 export default class Tags extends Vue {
-  tagList = store.fetchTags()
+
   selectedTags: string[] = [];
 
   toggle(tag: string) {
@@ -35,7 +43,8 @@ export default class Tags extends Vue {
   createTag() {
     const name = window.prompt('写他娘的标签名');
     if (name) {
-      store.createTag(name);
+      // TODO
+      // store.createTag(name);
     } else {
       alert('不能留空🙅‍♀️ 写他娘的标签名');
     }

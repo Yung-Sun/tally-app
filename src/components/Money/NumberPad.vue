@@ -66,9 +66,13 @@ export default class NumberPad extends Vue {
     if (lastNumber === '.') {
       this.output += '0';
     }
-    this.$emit('update:value', this.output);
-    this.$emit('submit', this.output);
-    this.output = '0';
+    if (this.output !== '0'){
+      this.$emit('update:value', this.output);
+      this.$emit('submit', this.output);
+      this.output = '0';
+    }else{
+      alert('0元写个der，要写钱')
+    }
   }
 
 }
