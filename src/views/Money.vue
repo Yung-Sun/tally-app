@@ -5,7 +5,7 @@
     <FormItem field-name="备注"
               placeholder="请输入备注"
               @update:value="onUpdateNote"/>
-    <Tags/>
+    <Tags @update:value="onUpdateTag"/>
   </Layout>
 </template>
 
@@ -43,6 +43,9 @@ export default class Money extends Vue {
 
   onUpdateNote(value: string) {
     this.record.notes = value;
+  }
+  onUpdateTag(value: string) {
+    this.record.tags = value;
   }
 
   saveRecord() {

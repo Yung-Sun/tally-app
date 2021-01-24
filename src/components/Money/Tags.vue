@@ -13,17 +13,19 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
 import {Component} from 'vue-property-decorator';
+import TagHelper from '@/mixins/TagHelper';
+import {mixins} from 'vue-class-component';
 
 @Component({
+  mixins: [TagHelper],
   computed:{
     tagList(){
       return this.$store.state.tagList
     }
   }
 })
-export default class Tags extends Vue {
+export default class Tags extends mixins(TagHelper) {
 
   selectedTags: string[] = [];
 
@@ -41,14 +43,6 @@ export default class Tags extends Vue {
     this.$emit('update:value',this.selectedTags)
   }
 
-  createTag() {
-    const name = window.prompt('写他娘的标签名');
-    if (name) {
-      this.$store.commit('createTag', name)
-    } else {
-      alert('不能留空🙅‍♀️ 写他娘的标签名');
-    }
-  }
 
 
 

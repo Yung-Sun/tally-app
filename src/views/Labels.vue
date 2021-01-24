@@ -14,33 +14,25 @@
 
 <script lang="ts">
 
-import Vue from 'vue';
 import {Component} from 'vue-property-decorator';
 import Button from '@/components/Button.vue';
+import TagHelper from '@/mixins/TagHelper';
+import {mixins} from 'vue-class-component';
 
 
 @Component({
+  mixins: [TagHelper],
   components: {Button},
   computed: {
-    // tags() {
-    //   return this.$store.tagList;
-    // }
+    tags() {
+      return this.$store.state.tagList;
+    }
   }
 })
 
-export default class Labels extends Vue {
-  //TODO
-  // tags = store.tagList;
-  tags = [];
-
-  createTag() {
-    const name = window.prompt('写他娘的标签名');
-    if (name) {
-      // TODO
-      // store.createTag(name);
-    } else {
-      alert('不能留空🙅‍♀️ 写他娘的标签名');
-    }
+export default class Labels extends mixins(TagHelper) {
+  created(){
+    this.$store.commit('fetchTags')
   }
 }
 </script>
