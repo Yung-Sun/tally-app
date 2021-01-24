@@ -55,8 +55,8 @@ const store = new Vuex.Store({
     saveTags(state) {
       window.localStorage.setItem('tagList', JSON.stringify(state.tagList));
     },
-    updateTag(state, payload: {id: string; name: string}){
-      const {id,name} = payload
+    updateTag(state, payload: { id: string; name: string }) {
+      const {id, name} = payload;
       const idList = state.tagList.map(item => item.id);
       if (idList.indexOf(id) >= 0) {
         const names = state.tagList.map(item => item.name);
@@ -68,12 +68,23 @@ const store = new Vuex.Store({
           store.commit('saveTags');
         }
       } else {
-        alert('找不着！');
+        alert('修改失败');
       }
+    },
+    removeTag(state,id: string){
+      let index = -1
+      for (let i=0; i < state.tagList.length; i++) {
+        if(state.tagList[i].id === id){
+          index = i;
+          break;
+        }
+      }
+      state.tagList.splice(index,1)
+      store.commit('saveTags')
+
     }
   },
 });
 
-console.log(store.state.recordList);
 
 export default store;
