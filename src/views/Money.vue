@@ -5,7 +5,7 @@
     <FormItem field-name="备注"
               placeholder="请输入备注"
               @update:value="onUpdateNote"/>
-    <Tags @update:value="onUpdateTag"/>
+    <Tags/>
   </Layout>
 </template>
 
@@ -16,40 +16,31 @@ import Types from '@/components/Money/Types.vue';
 import FormItem from '@/components/Money/FormItem.vue';
 import Tags from '@/components/Money/Tags.vue';
 import {Component} from 'vue-property-decorator';
-import store from '@/store';
 
 @Component({
   components: {Tags, FormItem, Types, NumberPad},
-  computed:{
-    tags(){
-      return store.state.tagList
-    },
-    recordList(){
-      return this.$store.state.recordList
-    }
-  }
 })
 
 export default class Money extends Vue {
-  // tags = this.store.fetchTags();
-  recordList = this.$store.recordList;
+
+  get recordList() {
+    return this.$store.state.recordList;
+  }
+
   record: RecordItem = {
     tags: [], notes: '', type: '-', amount: 0
   };
 
-  created(){
-    this.$store.commit('fetchRecords')
+  created() {
+    this.$store.commit('fetchRecords');
   }
 
   onUpdateNote(value: string) {
     this.record.notes = value;
   }
-  onUpdateTag(value: string) {
-    this.record.tags = value;
-  }
 
   saveRecord() {
-    this.$store.commit('createRecord', this.record)
+    this.$store.commit('createRecord', this.record);
   }
 }
 
