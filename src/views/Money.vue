@@ -9,7 +9,6 @@
               placeholder="请输入备注"
               @update:value="onUpdateNote"/>
     <Tags/>
-    {{ record }}
   </Layout>
 </template>
 
