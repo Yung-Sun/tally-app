@@ -7,10 +7,9 @@
           {{ beautify(group.title) }}
           <span>￥ {{ group.total }}</span>
         </h1>
-
         <ol>
           <li v-for="item in group.items" :key="item.id" class="record">
-            <span>{{ tagString(item.tags) }}</span>
+            <span>{{tagString( item.tags )}}</span>
             <span class="notes">{{ item.notes }}</span>
             <span>￥{{ item.amount }}</span>
           </li>
@@ -56,8 +55,11 @@ export default class Statistics extends Vue {
   }
 
   tagString(tags: Tag[]) {
-    return tags.length === 0 ? '无' : tags.join(',');
-
+    if (tags.length === 0){
+      return '无标签'
+    }else{
+      return tags.map(item => item.name).join(', ')
+    }
   }
 
   get recordList() {
@@ -66,14 +68,16 @@ export default class Statistics extends Vue {
 
   get groupList() {
     const {recordList} = this;
+    type Result = {title: string;total?: number;items: RecordItem[]}
     if (recordList.length === 0) {
       return [];
     } else {
       const sortedRecordList = clone(recordList)
           .filter(r => r.type === this.type)
           .sort((a, b) => dayjs(b.createdAt).valueOf() - dayjs(a.createdAt).valueOf());
-      type Result = {title: string;total?: number;items: RecordItem[]}
-      const result: Result = [{title: dayjs(sortedRecordList[0].createdAt).format('YYYY-MM-DD'), items: [sortedRecordList[0]]}];
+      if(sortedRecordList.length === 0){return [] as Result;}
+
+      const result: Result = [{title: dayjs(sortedRecordList[0].createdAt).format('YYYY-MM-DD'), items: []}];
       for (let i = 0; i < sortedRecordList.length; i++) {
         const current = sortedRecordList[i];
         const last = result[result.length - 1];
@@ -108,7 +112,7 @@ export default class Statistics extends Vue {
       background: #c4c4c4;
 
       &::after {
-        background: #666666;
+        background: #E31F26;
       }
     }
   }

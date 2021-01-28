@@ -27,6 +27,7 @@ export default class Tags extends mixins(TagHelper) {
     return this.$store.state.tagList
   }
 
+
   created(){
     this.$store.commit('fetchTags')
   }
@@ -37,8 +38,8 @@ export default class Tags extends mixins(TagHelper) {
     } else {
       const index = this.selectedTags.indexOf(tag);
       this.selectedTags.splice(index, 1);
-
     }
+    console.log(this.selectedTags);
     this.$emit('update:value',this.selectedTags)
   }
 
