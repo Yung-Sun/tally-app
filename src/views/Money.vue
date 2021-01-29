@@ -7,7 +7,8 @@
           :value.sync="record.type"/>
     <FormItem field-name="备注"
               placeholder="请输入备注"
-              @update:value="onUpdateNote"/>
+              value.sync="record.notes"
+    />
     <Tags @update:value="onUpdateTags"/>
   </Layout>
 </template>
@@ -26,7 +27,6 @@ import recordTypeList from '@/constant/recordTypeList';
 })
 
 export default class Money extends Vue {
-
   get recordList() {
     return this.$store.state.recordList;
   }
@@ -51,7 +51,12 @@ export default class Money extends Vue {
   }
 
   saveRecord() {
+    if(!this.record.tags || this.record.tags.length === 0){
+      return window.alert('选他娘的标签')
+    }
     this.$store.commit('createRecord', this.record);
+    window.alert('保存成功')
+    this.record.notes = ''
   }
 }
 

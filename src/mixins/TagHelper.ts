@@ -7,6 +7,7 @@ export class TagHelper extends Vue {
     const name = window.prompt('写他娘的标签名(最多五个字)');
     if (name) {
       this.$store.commit('createTag', name)
+      window.alert('创建成功');
     } else {
       alert('不能留空🙅‍♀️ 写他娘的标签名');
     }

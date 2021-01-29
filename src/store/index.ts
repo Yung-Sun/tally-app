@@ -23,7 +23,7 @@ const store = new Vuex.Store({
     fetchRecords(state) {
       state.recordList = JSON.parse(window.localStorage.getItem('recordList') || '[]') as RecordItem[];
     },
-    createRecord(state, record) {
+    createRecord(state, record: RecordItem) {
       const record2: RecordItem = clone(record);
       record2.createdAt = new Date().toISOString();
       state.recordList.push(record2);
@@ -36,20 +36,25 @@ const store = new Vuex.Store({
     // Tag
     fetchTags(state) {
       state.tagList = JSON.parse(window.localStorage.getItem('tagList') || '[]') as Tag[];
+      const maxTagId = JSON.parse(window.localStorage.getItem('_idMax') as string)
+      if (state.tagList.length === 0 && !maxTagId){
+        store.commit('createTag', '衣')
+        store.commit('createTag', '食')
+        store.commit('createTag', '住')
+        store.commit('createTag', '行')
+      }
     },
     createTag(state, name: string) {
       const names = state.tagList.map(item => item.name);
       if (names.indexOf(name) >= 0) {
         window.alert('重他娘的名');
       }else{
-
         if (name.length > 5){
           window.alert('名字太长啦，最多五个字')
         }else{
           const id = createId().toString();
           state.tagList.push({id, name: name});
           store.commit('saveTags');
-          window.alert('创建成功');
         }
       }
     },

@@ -34,6 +34,7 @@ export default class NumberPad extends Vue {
   inputNumber(event: MouseEvent) {
     const button = (event.target as HTMLButtonElement);
     const inputText = button.textContent!; //感叹号表示该变量类型可能是‘空’以外的任意类型。
+
     if (this.output.length === 16) {return;}
     if (this.output === '0') {
       if ('0123456789'.indexOf(inputText) >= 0) {
@@ -66,12 +67,12 @@ export default class NumberPad extends Vue {
     if (lastNumber === '.') {
       this.output += '0';
     }
-    if (this.output !== '0'){
+    if (parseFloat(this.output) !== 0){
       this.$emit('update:value', parseFloat(this.output));
       this.$emit('submit', parseFloat(this.output));
       this.output = '0';
     }else{
-      alert('0元写个der，要写钱')
+      alert('0元记个der，要写钱')
     }
   }
 

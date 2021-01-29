@@ -1,7 +1,7 @@
 <template>
   <Layout>
     <Tabs class-prefix="types" :data-source="recordTypeList" :value.sync="type"/>
-    <ol>
+    <ol v-if="groupList.length>0">
       <li v-for="(group,index) in groupList" :key="index">
         <h1 class="title">
           {{ beautify(group.title) }}
@@ -16,7 +16,9 @@
         </ol>
       </li>
     </ol>
-
+<div v-else class="noResult">
+  <span>啥也没有，散会！</span>
+</div>
   </Layout>
 </template>
 
@@ -94,9 +96,9 @@ export default class Statistics extends Vue {
     }
   }
 
-  beforeCreate() {
-    this.$store.commit('fetchRecords');
-  }
+  // beforeCreate() {
+  //   this.$store.commit('fetchRecords');
+  // }
 
   type = '-';
   recordTypeList = recordTypeList;
@@ -104,6 +106,22 @@ export default class Statistics extends Vue {
 </script>
 
 <style lang="scss" scoped>
+.noResult{
+  margin-top: 40px;
+  margin-left: auto;
+  margin-right: auto;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50vw;
+  color: #777;
+}
+
+
 ::v-deep {
   .types-tabs-item {
     background: white;
