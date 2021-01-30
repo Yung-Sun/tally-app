@@ -5,7 +5,7 @@ import router from './router';
 import store from './store';
 import Nav from '@/components/Nav.vue';
 import Layout from '@/components/Layout.vue';
-import Icons from '@/components/Icons.vue';
+import Icons from '@/components/Icons.vue'
 
 Vue.config.productionTip = false;
 
@@ -23,7 +23,7 @@ new Vue({
 if (document.documentElement.clientWidth > 500) {
   window.alert('请使用手机打开本页面，以保证浏览效果');
   const img = document.createElement('img');
-  img.src = 'public/QR-Code.png';
+  img.src = './QR-Code.png';
   img.style.position = 'fixed';
   img.style.left = '50%';
   img.style.top='50%';
