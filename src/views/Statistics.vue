@@ -40,7 +40,7 @@ export default class Statistics extends Vue {
     this.$store.commit('fetchRecords');
   }
 
-  beautify(string) {
+  beautify(string: string) {
     const day = dayjs(string);
     const today = dayjs();
     const yesterday = today.subtract(1, 'day');
@@ -70,17 +70,17 @@ export default class Statistics extends Vue {
 
   get groupList() {
     const {recordList} = this;
-    type Result = {title: string;total?: number;items: RecordItem[]}
+    type Result = {title: string;total?: number;items: RecordItem[]}[]
     if (recordList.length === 0) {
       return [];
     } else {
       const sortedRecordList = clone(recordList)
           .filter(r => r.type === this.type)
           .sort((a, b) => dayjs(b.createdAt).valueOf() - dayjs(a.createdAt).valueOf());
-      if(sortedRecordList.length === 0){return [] as Result;}
+      if(sortedRecordList.length === 0){return [];}
 
-      const result: Result = [{title: dayjs(sortedRecordList[0].createdAt).format('YYYY-MM-DD'), items: []}];
-      for (let i = 0; i < sortedRecordList.length; i++) {
+      const result: Result = [{title: dayjs(sortedRecordList[0].createdAt).format('YYYY-MM-DD'), items: [sortedRecordList[0]]}];
+      for (let i = 1; i < sortedRecordList.length; i++) {
         const current = sortedRecordList[i];
         const last = result[result.length - 1];
         if (dayjs(last.title).isSame(dayjs(current.createdAt), 'day')) {
