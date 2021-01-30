@@ -96,9 +96,6 @@ export default class Statistics extends Vue {
     }
   }
 
-  // beforeCreate() {
-  //   this.$store.commit('fetchRecords');
-  // }
 
   type = '-';
   recordTypeList = recordTypeList;
@@ -117,7 +114,7 @@ export default class Statistics extends Vue {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 50vw;
+  max-width: 250px;
   color: #777;
 }
 
