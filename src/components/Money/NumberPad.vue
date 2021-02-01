@@ -6,15 +6,15 @@
         <button @click="inputNumber">1</button>
         <button @click="inputNumber">2</button>
         <button @click="inputNumber">3</button>
-        <button @click="remove">删除</button>
+        <button @click="remove" class="delete"><span>刪 除</span></button>
         <button @click="inputNumber">4</button>
         <button @click="inputNumber">5</button>
         <button @click="inputNumber">6</button>
-        <button @click="clear">归零</button>
+        <button @click="clear"><span>清 空</span></button>
         <button @click="inputNumber">7</button>
         <button @click="inputNumber">8</button>
         <button @click="inputNumber">9</button>
-        <button @click="submit" class="ok">OK</button>
+        <button @click="submit" class="ok"><span>提 交</span></button>
         <button @click="inputNumber" class="zero">0</button>
         <button @click="inputNumber">.</button>
       </div>
@@ -81,68 +81,59 @@ export default class NumberPad extends Vue {
 
 <style lang="scss" scoped>
 @import "~@/assets/style/gobal.scss";
+@import "~@/assets/style/font.css";
 
 .numberPad {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 5px;
+
   > .output {
     font-size: 36px;
-    font-family: Consolas, monospace;
+    font-family: Montserrat-Light, Consolas, monospace;
     padding: 9px;
     text-align: right;
-    box-shadow: inset 0 -5px 5px -5px fade-out(black, 0.5);
+    width: 75%;
+    background: #EEEEEE;
+    box-shadow: inset 5px 5px 12px -2px rgba(114, 114, 114, 0.25), inset -3px -3px 16px #FFFFFF;
+    border-radius: 10px;
+
   }
 
   > .buttons {
     @extend %x;
+    width: 75%;
+    margin: 10px auto;
+    transform: translateX(5px); //使键盘保持居中
+
 
     > button {
       float: left;
-      width: 25%;
-      height: 64px;
-      background: transparent;
+      width: 21%;
+      height: 60px;
       border: none;
-
-      &.ok {
-        float: right;
-        height: 64*2px;
+      margin-bottom: 10px;
+      margin-right: 4%;
+      background: #F1F1F1;
+      box-shadow: 3px 3px 7px -1px #FFFFFF, -5px -5px 7px -5px rgba(0, 0, 0, 0.25);
+      border-radius: 15px;
+      color: #515151;
+      font-family: Montserrat-Light, $font-hei;
+      > span{
+        writing-mode: vertical-lr;
       }
-
-      &.zero {
-        width: 50%;
-      }
-
-      $bg: #f2f2f2;
-
-      &:nth-child(1) {
-        background: $bg;
-      }
-
-      &:nth-child(2), &:nth-child(5) {
-        background: darken($bg, 4%);
-      }
-
-      &:nth-child(3), &:nth-child(6), &:nth-child(9) {
-        background: darken($bg, 4*2%);
-      }
-
-      &:nth-child(4) {
-        background: #E31F26;
+      &.delete{
+        background: #FF4D42;
         color: white;
       }
-
-      &:nth-child(7), &:nth-child(10) {
-        background: darken($bg, 4*4%);
+      &.ok {
+        float: right;
+        height: 130px;
       }
-
-      &:nth-child(8), &:nth-child(11), &:nth-child(13) {
-        background: darken($bg, 4*6%);
-      }
-
-      &:nth-child(14) {
-        background: darken($bg, 4*8%);
-      }
-
-      &:nth-child(12) {
-        background: darken($bg, 4*10%);
+      &.zero {
+        width: 45%;
       }
     }
   }

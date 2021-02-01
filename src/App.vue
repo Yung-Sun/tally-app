@@ -8,13 +8,14 @@
 <style lang="scss">
 @import "~@/assets/style/gobal.scss";
 @import "~@/assets/style/reset.scss";
+@import "~@/assets/style/font.css";
 body{
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-family: $font-hei;
-  color: #333;
+  font-family: Montserrat, $font-hei;
+  color: #515151;
   font-size: 16px;
-  background: #eee;
+  background: #EEEEEE;
 }
 #app{
   max-width: 500px;

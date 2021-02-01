@@ -38,7 +38,7 @@ export default {
       align-items:center;
       flex-direction: column;
       font-size: 12px;
-      font-family: "Microsoft YaHei UI",serif;
+      font-family: Montserrat,"Microsoft YaHei UI",serif;
       .icon{
         width: 25px;
         height: 25px;
