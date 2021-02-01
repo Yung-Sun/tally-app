@@ -60,33 +60,35 @@ export default class Tags extends mixins(TagHelper) {
     display: flex;
     flex-wrap: wrap;
     overflow: hidden;
+    padding: 10px;
 
     > li {
-      background: #ccc;
-      height: 24px;
-      border-radius: 12px;
+      height: 30px;
       margin-right: 13px;
       margin-top: 8px;
       text-align: center;
-      line-height: 24px;
-      padding: 0 16px;
+      line-height: 30px;
+      color: #515151;
+      padding: 0 20px;
+      background: #F1F1F1;
+      box-shadow: 3px 3px 7px -1px #FFFFFF, -5px -5px 7px -5px rgba(0, 0, 0, 0.25);
+      border-radius: 8px;
 
       &.selected {
-        background: #E31F26;
+        background: #FF4D42;
         color: white;
       }
     }
   }
-
   > .new {
-    padding-top: 16px;
-
+    padding-top: 5px;
+    padding-left: 10px;
     button {
       padding: 1px 3px;
       background: transparent;
       border: none;
-      color: #999;
-      border-bottom: 1px solid #222222;
+      color: #999999;
+      border-bottom: 1px solid #999999;
     }
   }
 }
