@@ -1,7 +1,10 @@
 <template>
   <div>
     <div class="numberPad">
-      <div class="output">{{ output }}</div>
+      <div class="output">
+        <span>￥</span>
+        {{ output }}
+      </div>
       <div class="buttons">
         <button @click="inputNumber">1</button>
         <button @click="inputNumber">2</button>
@@ -67,12 +70,12 @@ export default class NumberPad extends Vue {
     if (lastNumber === '.') {
       this.output += '0';
     }
-    if (parseFloat(this.output) !== 0){
+    if (parseFloat(this.output) !== 0) {
       this.$emit('update:value', parseFloat(this.output));
       this.$emit('submit', parseFloat(this.output));
       this.output = '0';
-    }else{
-      alert('0元记个der，要写钱')
+    } else {
+      alert('0元记个der，要写钱');
     }
   }
 
@@ -89,23 +92,29 @@ export default class NumberPad extends Vue {
   flex-direction: column;
   align-items: center;
   margin-top: 5px;
+  font-family: Montserrat-Light, Montserrat, Consolas, monospace;
 
   > .output {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     font-size: 36px;
-    font-family: Montserrat-Light, Consolas, monospace;
-    padding: 9px;
+    padding: 5px 20px;
     text-align: right;
-    width: 75%;
+    width: 85%;
     background: #EEEEEE;
     box-shadow: inset 5px 5px 12px -2px rgba(114, 114, 114, 0.25), inset -3px -3px 16px #FFFFFF;
     border-radius: 10px;
 
+    > span {
+      font-size: 24px;
+    }
   }
 
   > .buttons {
     @extend %x;
-    width: 75%;
-    margin: 10px auto;
+    width: 85%;
+    margin: 15px auto;
     transform: translateX(5px); //使键盘保持居中
 
 
@@ -121,17 +130,21 @@ export default class NumberPad extends Vue {
       border-radius: 15px;
       color: #515151;
       font-family: Montserrat-Light, $font-hei;
-      > span{
+
+      > span {
         writing-mode: vertical-lr;
       }
-      &.delete{
+
+      &.delete {
         background: #FF4D42;
         color: white;
       }
+
       &.ok {
         float: right;
         height: 130px;
       }
+
       &.zero {
         width: 45%;
       }

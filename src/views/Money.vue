@@ -3,12 +3,14 @@
 
     <NumberPad :value.sync="record.amount" @submit="saveRecord"/>
 
-    <Tabs :data-source="recordTypeList"
-          :value.sync="record.type"/>
     <FormItem field-name="备注"
               placeholder="请输入备注"
               :value.sync="record.notes"
     />
+
+    <Tabs :data-source="recordTypeList"
+          :value.sync="record.type"/>
+
     <Tags @update:value="onUpdateTags"/>
   </Layout>
 </template>
