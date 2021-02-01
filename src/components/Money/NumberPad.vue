@@ -91,7 +91,6 @@ export default class NumberPad extends Vue {
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  margin-top: 5px;
   font-family: Montserrat-Light, Montserrat, Consolas, monospace;
 
   > .output {

@@ -3,8 +3,7 @@
 
     <NumberPad :value.sync="record.amount" @submit="saveRecord"/>
 
-    <FormItem field-name="备注"
-              placeholder="请输入备注"
+    <FormItem field-name="備注(可選)"
               :value.sync="record.notes"
     />
 
