@@ -81,8 +81,7 @@ export default class Tags extends mixins(TagHelper) {
     }
   }
   > .new {
-    padding-top: 5px;
-    padding-left: 10px;
+    padding: 8px 16px;
     button {
       padding: 1px 3px;
       background: transparent;

@@ -6,7 +6,6 @@ import createId from '@/lib/createId';
 Vue.use(Vuex); // 把 store 绑到 Vue.prototype。 Vue.prototype.$store = store
 
 
-
 const store = new Vuex.Store({
   state: {
     recordList: [],
@@ -36,30 +35,27 @@ const store = new Vuex.Store({
     // Tag
     fetchTags(state) {
       state.tagList = JSON.parse(window.localStorage.getItem('tagList') || '[]') as Tag[];
-      const maxTagId = JSON.parse(window.localStorage.getItem('_idMax') as string)
-      if (state.tagList.length === 0 && !maxTagId){
-        store.commit('createTag', '衣')
-        store.commit('createTag', '食')
-        store.commit('createTag', '住')
-        store.commit('createTag', '行')
+      const maxTagId = JSON.parse(window.localStorage.getItem('_idMax') as string);
+      if (state.tagList.length === 0 && !maxTagId) {
+        store.commit('createTag', '衣');
+        store.commit('createTag', '食');
+        store.commit('createTag', '住');
+        store.commit('createTag', '行');
       }
     },
     createTag(state, name: string) {
       const names = state.tagList.map(item => item.name);
       if (names.indexOf(name) >= 0) {
         window.alert('重他娘的名');
-      }else{
-        if (name.length > 5){
-          window.alert('名字太长啦，最多五个字')
-        }else{
-          const id = createId().toString();
-          state.tagList.push({id, name: name});
-          store.commit('saveTags');
-        }
+      } else {
+        const id = createId().toString();
+        state.tagList.push({id, name: name});
+        store.commit('saveTags');
       }
     },
     saveTags(state) {
       window.localStorage.setItem('tagList', JSON.stringify(state.tagList));
+      window.alert('创建成功')
     },
     updateTag(state, payload: { id: string; name: string }) {
       const {id, name} = payload;
@@ -77,16 +73,16 @@ const store = new Vuex.Store({
         alert('修改失败');
       }
     },
-    removeTag(state,id: string){
-      let index = -1
-      for (let i=0; i < state.tagList.length; i++) {
-        if(state.tagList[i].id === id){
+    removeTag(state, id: string) {
+      let index = -1;
+      for (let i = 0; i < state.tagList.length; i++) {
+        if (state.tagList[i].id === id) {
           index = i;
           break;
         }
       }
-      state.tagList.splice(index,1)
-      store.commit('saveTags')
+      state.tagList.splice(index, 1);
+      store.commit('saveTags');
 
     }
   },
