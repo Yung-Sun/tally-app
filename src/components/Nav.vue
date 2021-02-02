@@ -2,17 +2,17 @@
   <nav>
     <router-link to="/money" class="item" active-class="selected">
       <Icons name="money"/>
-      记账
+      <span>记账</span>
     </router-link>
 
     <router-link to="/labels" class="item" active-class="selected">
       <Icons name="labels"/>
-      标签
+      <span>标签</span>
     </router-link>
 
     <router-link to="/statistics" class="item" active-class="selected">
       <Icons name="statistics"/>
-      统计
+      <span>统计</span>
     </router-link>
   </nav>
 </template>
@@ -29,7 +29,9 @@ export default {
     //border: 1px solid black ;
     display: flex;
     flex-direction: row;
-    box-shadow: 0 0 4px rgba(0,0,0,.3);
+    background: #EEEEEE;
+    box-shadow: 0 11px 25px rgba(0, 0, 0, 0.25);
+    padding: 4px;
     > .item{
       padding: 2px 0;
       width: 33.33333333333%;
@@ -38,15 +40,16 @@ export default {
       align-items:center;
       flex-direction: column;
       font-size: 12px;
+      color: #aaaaaa;
       font-family: Montserrat,"Microsoft YaHei UI",serif;
       .icon{
-        width: 25px;
-        height: 25px;
+        width: 30px;
+        height: 30px;
         margin: 2px 0;
       }
     }
     > .item.selected{
-      color: #E31F26;
+      color: #FF4D42;
     }
   }
 

@@ -55,7 +55,6 @@ const store = new Vuex.Store({
     },
     saveTags(state) {
       window.localStorage.setItem('tagList', JSON.stringify(state.tagList));
-      window.alert('创建成功')
     },
     updateTag(state, payload: { id: string; name: string }) {
       const {id, name} = payload;

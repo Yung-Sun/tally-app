@@ -7,7 +7,7 @@
       </router-link>
     </div>
     <div class="createTagsWrapper">
-      <Button class="createTags" @click.native="createTag">新建标签</Button>
+      <Button class="createTags" @click.native="createTag">新 建 標 簽</Button>
     </div>
   </Layout>
 </template>
@@ -37,21 +37,22 @@ export default class Labels extends mixins(TagHelper) {
 
 <style lang="scss" scoped>
 .tags {
-  background: white;
+  background: #EEEEEE;
   font-size: 16px;
-  padding-left: 16px;
-
+  padding: 16px;
+  color: #515151;
   > .tag {
+    padding: 0 24px;
     min-height: 44px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-bottom: 1px solid #eeeeee;
-
+    background: #F1F1F1;
+    box-shadow: 3px 3px 7px -1px #FFFFFF, -5px -5px 7px -5px rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
+    margin: 12px 0;
     svg {
       width: 12px;
-      color: #666;
-      margin-right: 16px;
     }
   }
 }
@@ -61,12 +62,15 @@ export default class Labels extends mixins(TagHelper) {
   padding-top: 44px;
 
   > .createTags {
-    background: #666666;
-    color: white;
+    color: #515151;
+    font-size: 16px;
     border: none;
-    border-radius: 4px;
-    height: 40px;
+    width: 144px;
+    height: 48px;
     padding: 0 16px;
+    background: #F1F1F1;
+    box-shadow: 3px 3px 7px -1px #FFFFFF, -5px -5px 7px -5px rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
   }
 }
 
