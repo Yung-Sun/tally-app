@@ -26,7 +26,6 @@ export default {
 
 <style lang="scss" scoped>
   nav{
-    //border: 1px solid black ;
     display: flex;
     flex-direction: row;
     background: #EEEEEE;

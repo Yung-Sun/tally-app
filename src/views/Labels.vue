@@ -67,10 +67,7 @@ export default class Labels extends mixins(TagHelper) {
     width: 144px;
     height: 48px;
     padding: 0 16px;
-    background: #FF4D42;
-    color: white;
-    box-shadow: 3px 3px 7px -1px #FFFFFF, -5px -5px 7px -5px rgba(0, 0, 0, 0.25);
-    border-radius: 8px;
+
   }
 }
 

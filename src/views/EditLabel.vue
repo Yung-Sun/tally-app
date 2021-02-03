@@ -1,18 +1,14 @@
 <template>
   <Layout>
-    <header>
-      <Icons class="leftIcon" name="left" @click.native="goback"/>
-      <span class="title">编辑标签</span>
-      <span class="occupation"/>
-    </header>
+    <button @click="goback" class="goBack">
+      <Icons class="leftIcon" name="left"/>
+      <span class="title">保存并返回</span>
+    </button>
 
-    <div class="form-wrapper">
-      <FormItem :value="currentTag.name"
-                @update:value="update"
-                field-name="标签名"
-                placeholder="请输入标签名"/>
-    </div>
-    <div class="button-wrapper">
+    <FormItem :value="currentTag.name"
+              @update:value="update"
+              field-name="标签名"/>
+    <div class="delete-wrapper">
       <Button @click="remove">删除标签</Button>
     </div>
   </Layout>
@@ -48,7 +44,7 @@ export default class EditLabel extends Vue {
 
   remove() {
     if (this.currentTag) {
-      if(confirm('真他娘的要删？')){
+      if (confirm('真他娘的要删？')) {
         this.$store.commit('removeTag', this.currentTag.id);
         this.$router.back();
       }
@@ -62,30 +58,30 @@ export default class EditLabel extends Vue {
 </script>
 
 <style lang="scss" scoped>
-header {
-  background: white;
-  padding: 16px;
+.goBack {
+  margin: 30px;
+  padding: 6px 10px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  border: none;
+  background: #F1F1F1;
+  box-shadow: 3px 3px 7px -1px #FFFFFF, -5px -5px 7px -5px rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+  color: #FF4D42;
 
   > .leftIcon {
-    width: 16px;
-    height: 16px;
+    width: 11px;
+    height: 11px;
+    margin-right: 8px;
   }
 
-  > .occupation {
-    width: 16px;
-    height: 16px;
+  > .title {
+    font-size: 12px;
   }
 }
 
-.form-wrapper {
-  background: white;
-  margin-top: 16px;
-}
-
-.button-wrapper {
+.delete-wrapper {
   margin-top: 16*3px;
   text-align: center;
 }
