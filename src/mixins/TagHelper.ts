@@ -4,7 +4,7 @@ import Component from 'vue-class-component'
 @Component
 export class TagHelper extends Vue {
   createTag() {
-    const name = window.prompt('写他娘的标签名(最多五个字)');
+    const name = window.prompt('请写标签名(最多五个字)');
 
     if (name) {
       if (name.length <= 5){
@@ -13,7 +13,7 @@ export class TagHelper extends Vue {
         window.alert('名字太长啦，最多五个字')
       }
     } else {
-      alert('不能留空🙅‍♀️ 写他娘的标签名');
+      alert('不能留空🙅‍♀️ 请写标签名');
     }
   }
 }

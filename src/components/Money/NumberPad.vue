@@ -75,7 +75,7 @@ export default class NumberPad extends Vue {
       this.$emit('submit', parseFloat(this.output));
       this.output = '0';
     } else {
-      alert('0元记个der，要写钱');
+      alert('0元不能记账噢');
     }
   }
 

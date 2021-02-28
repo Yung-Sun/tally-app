@@ -3,7 +3,7 @@
 
     <NumberPad :value.sync="record.amount" @submit="saveRecord"/>
 
-    <FormItem field-name="備注(可選)"
+    <FormItem field-name="备注(可选)"
               :value.sync="record.notes"
     />
 
@@ -53,7 +53,7 @@ export default class Money extends Vue {
 
   saveRecord() {
     if(!this.record.tags || this.record.tags.length === 0){
-      return window.alert('选他娘的标签')
+      return window.alert('请至少选择一个标签～')
     }
     this.$store.commit('createRecord', this.record);
     window.alert('保存成功')

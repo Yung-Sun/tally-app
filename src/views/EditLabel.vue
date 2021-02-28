@@ -44,7 +44,7 @@ export default class EditLabel extends Vue {
 
   remove() {
     if (this.currentTag) {
-      if (confirm('真他娘的要删？')) {
+      if (confirm('想好要删了？')) {
         this.$store.commit('removeTag', this.currentTag.id);
         this.$router.back();
       }
